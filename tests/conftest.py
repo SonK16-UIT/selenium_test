@@ -15,7 +15,7 @@ def pytest_addoption(parser):
 def driver(request):
     browser = request.config.getoption("--browser")
     options = Options()
-    options.add_argument('--headless')
+    options.add_argument('--head')
     driver = None
 
     if browser == "chrome":

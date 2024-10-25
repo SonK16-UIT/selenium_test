@@ -1,8 +1,8 @@
 import pytest
-from ..pages.login_page import LoginPage, wait_for_element  # Relative import
+from tests.pages.login_page import LoginPage, wait_for_element  # Relative import
 from selenium.webdriver.common.by import By
 
-Đ
+
 class TestLoginPage:
     def test_valid_login(self, driver):
         """
@@ -31,10 +31,10 @@ class TestLoginPage:
         assert login_page.verify_successful_login(), "Login failed, dashboard not displayed."
 
     @pytest.mark.parametrize("username, password, error_message", [
-        ("invalid_user@example.com", "wrongPassword123", "Invalid credentials"),
-        ("admin89@gmail.com", "wrongPassword123", "Invalid credentials"),
-        ("", "ABCabc123!", "Username cannot be empty"),
-        ("admin89@gmail.com", "", "Password cannot be empty")
+        ("invalid_user@example.com", "wrongPassword123", "Tài khoản không hợp lệ!"),
+        ("admin89@gmail.com", "wrongPassword123", "Sai mật khẩu!"),
+        ("", "ABCabc123!", "Email không hợp lệ!"),
+        ("admin89@gmail.com", "", "Thiếu mật khẩu!")
     ])
     def test_invalid_login(self, driver, username, password, error_message):
         """
@@ -59,6 +59,9 @@ class TestLoginPage:
         # Click the login button
         login_page.click_login()
 
-        # Wait for potential error message and assert its presence
-        error_element = wait_for_element(driver, By.XPATH, "//div[@class='error']", timeout=5)
+        # Wait for potential error message using a more stable locator (XPath)
+        # Locate the error message using a more stable locator (XPath)
+        error_element = wait_for_element(driver, By.ID, "error_message", timeout=5)
+
+        # Assert that the error message matches the expected message
         assert error_element.text == error_message, f"Expected error message '{error_message}', but got '{error_element.text}'."
