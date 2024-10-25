@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Upgraded version
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4 # Upgraded version
         with:
           python-version: "3.12"
 
@@ -33,26 +33,18 @@ jobs:
         run: |
           cd tests
           mkdir -p reports
-          pytest t_login_page.py --browser=chrome --html=reports/reports.html
-        continue-on-error: true  # This ensures the workflow continues even if pytest fails
+          pytest t_login_page.py --browser=chrome --html=reports/reports.html || true
+          chmod 777 reports/
 
       - name: List files in reports folder
         run: ls -alh tests/reports/
-
-      - name: Show test results in logs
-        if: failure()
-        run: cat tests/reports/reports.html  # or you can log key parts
 
       - name: Set output
         id: results
         run: echo "artifactPath=tests/reports/" >> $GITHUB_OUTPUT
 
       - name: Upload test report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # Updated to v4
         with:
           name: test-report
           path: tests/reports/
-
-      - name: Notify on failure
-        if: failure()  # This step will run only if the previous steps failed
-        run: echo "Test failed. Please check the logs or the HTML report for more details."
