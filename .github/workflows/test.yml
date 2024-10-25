@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Upgraded version
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v4 # Upgraded version
+        uses: actions/setup-python@v4
         with:
           python-version: "3.12"
 
@@ -29,22 +29,29 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      # Step to run the tests, regardless of success or failure
       - name: Run tests and generate report
+        if: success() || failure()  # Run whether the test passes or fails
         run: |
           cd tests
           mkdir -p reports
-          pytest t_login_page.py --browser=chrome --html=reports/reports.html || true
-          chmod 777 reports/
+          pytest t_login_page.py --browser=chrome --html=reports/reports.html 
+          chmod 777 tests/reports/  # Use relative path
 
+      # List files to ensure the reports were generated
       - name: List files in reports folder
         run: ls -alh tests/reports/
 
+      # Set output with the path to the report
       - name: Set output
+        if: success() || failure()  # Ensure this runs regardless of test result
         id: results
         run: echo "artifactPath=tests/reports/" >> $GITHUB_OUTPUT
 
+      # Upload the test report as an artifact (this will be available for download)
       - name: Upload test report
-        uses: actions/upload-artifact@v4 # Updated to v4
+        uses: actions/upload-artifact@v4
+        if: success() || failure()  # Run regardless of success or failure
         with:
           name: test-report
-          path: tests/reports/
+          path: ${{ steps.results.outputs.artifactPath }}
