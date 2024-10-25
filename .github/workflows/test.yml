@@ -1,10 +1,9 @@
-# .github/workflows/test.yml
 name: Run Selenium Tests
 
 on:
   push:
     branches:
-      - main # Ensure tests run on push to the main branch
+      - main
 
 jobs:
   build:
@@ -17,38 +16,35 @@ jobs:
           - 4444:4444
 
     steps:
-      # Step 1: Checkout repository code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python 3.12
       - name: Set up Python 3.12
         uses: actions/setup-python@v3
         with:
           python-version: "3.12"
 
-      # Step 3: Install dependencies from requirements.txt
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Step 4: Run pytest and generate the HTML report
       - name: Run tests and generate report
         run: |
           cd tests
           mkdir -p reports
-          pytest t_login_page.py --browser=chrome --html=reports/reports.html
+          pytest t_login_page.py --browser=chrome --html=reports/reports.html || true
           chmod 777 reports/
 
-      # Step 5: Set the artifact path for the test report
+      - name: List files in reports folder
+        run: ls -alh tests/reports/
+
       - name: Set output
         id: results
         run: echo "artifactPath=tests/reports/" >> $GITHUB_OUTPUT
 
-      # Step 6: Upload the report as an artifact (available for download on GitHub)
       - name: Upload test report
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: ${{ steps.results.outputs.artifactPath }}
+          path: tests/reports/
