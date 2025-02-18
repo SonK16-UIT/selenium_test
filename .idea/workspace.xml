@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6d623e-8ebd-45de-9d96-5da78548bb1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/intergration/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/pages/home_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/t_keyword_driven.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/utils/selenium_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Selenium_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Selenium_Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/pages/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/pages/login_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/reports/automation-report-chrome.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/reports/automation-report-chrome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/t_login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/intergration/t_login_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +46,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Python tests.LoginPageChrome.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in t_keyword_driven.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in t_login_page.py.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in tests.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.pytest in Desktop.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/SONK16/PycharmProjects/Selenium_Project/tests/reports&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SONK16/PycharmProjects/Selenium_Project/tests/t_keyword_driven.py&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -51,6 +62,7 @@
       <recent name="C:\Users\SONK16\PycharmProjects\Selenium_Project\tests\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SONK16\PycharmProjects\Selenium_Project\tests\intergration" />
       <recent name="C:\Users\SONK16\PycharmProjects\Selenium_Project" />
       <recent name="C:\Users\SONK16\PycharmProjects\Selenium_Project\tests" />
       <recent name="C:\Users\SONK16\PycharmProjects\Selenium_Project\tests\reports" />
@@ -58,6 +70,23 @@
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Python tests in t_login_page.py">
+    <configuration name="Python tests in t_keyword_driven" type="tests" factoryName="py.test">
+      <module name="Selenium_Project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;--browser\u003dchrome --html\u003dreports/automation-report-chrome.html&quot;" />
+      <option name="_new_target" value="&quot;C:\\Users\\SONK16\\PycharmProjects\\Selenium_Project\\tests\\t_keyword_driven.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests in t_login_page.py" type="tests" factoryName="Autodetect" nameIsGenerated="true">
       <module name="Selenium_Project" />
       <option name="ENV_FILES" value="" />
@@ -69,7 +98,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;--browser\u003dchrome --html\u003dreports/automation-report-chrome.html&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/t_login_page.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/intergration/t_login_page.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -90,6 +119,7 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.Python tests in t_login_page.py" />
+      <item itemvalue="Python tests.Python tests in t_keyword_driven" />
       <item itemvalue="Python tests.Python tests in tests" />
     </list>
     <recent_temporary>

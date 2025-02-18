@@ -1,20 +1,14 @@
+# tests/pages/login_page.py
+from tests.utils.selenium_utils import wait_for_element
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-def wait_for_element(driver, by_type, identifier, timeout=10):
-    """Wait for an element to be located."""
-    return WebDriverWait(driver, timeout).until(
-        EC.presence_of_element_located((by_type, identifier))
-    )
 
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def open_page(self, url):
+    def open_page(self):
         """Opens the login page."""
-        self.driver.get(url)
+        self.driver.get("https://home-automation-raspi.firebaseapp.com/login")
 
     def enter_username(self, username):
         """Fills in the username."""
@@ -29,15 +23,14 @@ class LoginPage:
         self.driver.find_element(By.ID, "login_button").click()
 
     def verify_successful_login(self):
-        """
-        Verifies if the login was successful by checking if the dashboard link is displayed.
-        Returns True if successful, False otherwise.
-        """
+        """Verifies if the login was successful by checking for the dashboard."""
         try:
-            # Wait until the DASHBOARD link text is present and visible
-            dashboard_text = WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.XPATH, "//h2[contains(text(), 'DASHBOARD')]"))
+            dashboard_text = wait_for_element(
+                self.driver,
+                By.XPATH,
+                "//h2[contains(text(), 'DASHBOARD')]",
+                timeout=5
             )
             return dashboard_text.is_displayed()
         except Exception:
-            return False  # Return False if the element is not found or times out
+            return False
